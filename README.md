@@ -11,8 +11,8 @@ use arduino control damiao DM3519 motor
 速度模式 CAN 協議
 達妙說明書定義，速度模式下的 CAN 幀是： 
 CAN ID ： 0x200 + ID
-資料：D0~D3 = v_des（速度給定，float，小端，單位 rad/s）
-D4~D7 不使用
+資料：D0-D3 = v_des（速度給定，float，小端，單位 rad/s)
+D4-D7 不使用
 也就是：
 
 要讓 CAN ID = 1 的電機以某速度運轉：
