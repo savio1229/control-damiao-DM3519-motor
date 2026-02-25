@@ -117,7 +117,7 @@ void send_disable(uint16_t slaveId) {
 }
 
 // ============ 馬達與 USB 的初始化打包成一個函數 ============
-void initMotor(uint16_t slaveId) {
+void initMotor() {
   // 初始化 USB Host
   if (Usb.Init() == -1) {
     while (1) {}   // 失敗就卡死
@@ -138,13 +138,13 @@ void initMotor(uint16_t slaveId) {
   Acm.SetLineCoding(&lc);
 
   delay(100);                // 給 USB‑CAN / 馬達一點時間穩定
-  send_Enable(slaveId);      // 上電後一次性使能
 }
 
 // ============ setup / loop ============
 void setup() {
   Serial.begin(115200);
-  initMotor(MOTOR_SLAVE_ID);   // 所有馬達 setup 都包在這一行
+  initMotor();   // 所有馬達 setup 都包在這一行
+  send_Enable(MOTOR_SLAVE_ID);      // 上電後一次性使能
 }
 
 void loop() {
